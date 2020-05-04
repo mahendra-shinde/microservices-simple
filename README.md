@@ -3,6 +3,8 @@ Microservices with Spring boot and Netflix OSS
 
 I have containerized the solution using [docker-compose](./ms-container-demo/docker-compose.yml)
 
+![Application Architecture](./spring-cloud-in-docker.png)
+
 ## How to build all maven projects
 
 Switch inside each project directory and run following command:

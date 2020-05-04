@@ -13,7 +13,7 @@ services:
     image: eureka-server:latest
     
     ports:
-      - 8761
+      - "30001:8761"
     networks: 
       srv_net1:
         ipv4_address: "12.0.0.2"
@@ -22,7 +22,7 @@ services:
     build: ../hello-service/
     image: hello-service:latest
     ports:
-      - 80
+      - "30002:80"
     environment: 
       EUREKA_SERVER: eureka
       SERVER.PORT: 80
