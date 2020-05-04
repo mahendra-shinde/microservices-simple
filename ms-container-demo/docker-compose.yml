@@ -1,0 +1,53 @@
+version: "3.5"
+
+networks: 
+  srv_net1:
+    ipam: 
+      driver: default
+      config: 
+      - subnet: 12.0.0.0/24
+
+services: 
+  eureka:
+    build: ../demo-eureka-server
+    image: eureka-server:latest
+    
+    ports:
+      - 8761
+    networks: 
+      srv_net1:
+        ipv4_address: "12.0.0.2"
+    
+  hello-srv:
+    build: ../hello-service/
+    image: hello-service:latest
+    ports:
+      - 80
+    environment: 
+      EUREKA_SERVER: eureka
+      SERVER.PORT: 80
+    networks: 
+      srv_net1:
+        ipv4_address: "12.0.0.3"
+
+    depends_on: 
+    - eureka
+  
+
+  client:
+    build: ../demo-client
+    image: demo-client:latest
+    
+    ports:
+      - 80
+    networks: 
+      srv_net1:
+        ipv4_address: "12.0.0.4"
+
+    environment: 
+      EUREKA_SERVER: eureka
+      SERVER.PORT: 80
+
+    
+    depends_on: 
+    - eureka

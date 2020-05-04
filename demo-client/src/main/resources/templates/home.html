@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Spring Microservices demo</title>
+</head>
+<body>
+    <h1>Welcome to Spring Microservices demo!</h1>
+    <table>
+        <tr>
+            <td>Server Host Name</td>
+            <td><span th:text="${srvhost}" ></span></td>
+        </tr>
+        <tr>
+            <td>Server Host IP</td>
+            <td><span th:text="${srvip}" ></span></td>
+        </tr>
+        <tr>
+            <td>Message from Service: </td>
+            <td><span th:text="${message.body}" ></span></td>
+        </tr>
+        <tr>
+            <td>Message date: </td>
+            <td><span th:text="${message.date}" ></span></td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
